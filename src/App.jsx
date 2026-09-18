@@ -28,6 +28,8 @@
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
+import EventSection from "./Components/EventSection";
+import Footer from "./Components/Footer";
 function App() {
   return (
     <div>
@@ -36,8 +38,10 @@ function App() {
         {/* <h1>campus Connect</h1>
         <p>Welcome to College Event and Clubs</p> */}
         <Hero />
+        <EventSection />
       </main>
-      </div>
+      <Footer />
+    </div>
   );
 }
 export default App;
