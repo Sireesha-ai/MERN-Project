@@ -25,23 +25,56 @@
 //   );
 // }
 // export default App;
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
 import "./App.css";
+
 import Navbar from "./Components/Navbar";
-import Hero from "./Components/Hero";
-import EventSection from "./Components/EventSection";
 import Footer from "./Components/Footer";
+
+import HomePage from "./Pages/HomePage";
+import EventsPage from "./Pages/EventsPage";
+import AboutPage from "./Pages/AboutPage";
+
+import { initialEvents } from "./Data/events";
+
 function App() {
+  const [events, setEvents] = useState(initialEvents);
+
+  function handleAddEvent(newEvent) {
+    setEvents([...events, newEvent]);
+  }
+
   return (
     <div>
       <Navbar />
-      <main id="home">
-        {/* <h1>campus Connect</h1>
-        <p>Welcome to College Event and Clubs</p> */}
-        <Hero />
-        <EventSection />
-      </main>
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              events={events}
+              onAddEvent={handleAddEvent}
+            />
+          }
+        />
+
+        <Route
+          path="/events"
+          element={<EventsPage events={events} />}
+        />
+
+        <Route
+          path="/about"
+          element={<AboutPage />}
+        />
+      </Routes>
+
       <Footer />
     </div>
   );
 }
+
 export default App;

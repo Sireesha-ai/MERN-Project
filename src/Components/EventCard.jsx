@@ -73,30 +73,39 @@
 // }
 
 // export default EventSection;
-import EventCard from "./EventCard";
-
-function EventSection({ events }) {
+function EventCard({
+  title,
+  date,
+  time,
+  location,
+  category,
+  description,
+}) {
   return (
-    <section id="events" className="events-section">
-      <p className="section-label">Upcoming Activities</p>
+    <article className="event-card">
+      <p className="event-category">{category}</p>
 
-      <h2>Explore Campus Events</h2>
+      <h3>{title}</h3>
 
-      <div className="event-grid">
-        {events.map((event) => (
-          <EventCard
-            key={event.id}
-            title={event.title}
-            category={event.category}
-            date={event.date}
-            time={event.time}
-            location={event.location}
-            description={event.description}
-          />
-        ))}
+      <p className="event-description">{description}</p>
+
+      <div className="event-details">
+        <p>
+          <strong>Date:</strong> {date}
+        </p>
+
+        <p>
+          <strong>Time:</strong> {time}
+        </p>
+
+        <p>
+          <strong>Location:</strong> {location}
+        </p>
       </div>
-    </section>
+
+      <button type="button">View Details</button>
+    </article>
   );
 }
 
-export default EventSection;
+export default EventCard;
